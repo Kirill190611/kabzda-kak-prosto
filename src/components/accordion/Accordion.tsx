@@ -1,15 +1,27 @@
 import React from "react";
+import {AccordionTitle} from "./AccordionTitle";
+import {AccordionBody} from "./AccordionBody";
 
-export const Accordion = () => {
-    console.log("Accordion rendered")
-    return (
-        <div>
-            <h3>Menu</h3>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-        </div>
-    );
+type AccordionPropsType = {
+    accordionTitle: string
+    collapsed: boolean
 }
+export const Accordion = ({accordionTitle, collapsed}: AccordionPropsType) => {
+    console.log("Accordion rendered")
+
+    if (collapsed) {
+        return (
+            <div>
+                <AccordionTitle title={accordionTitle}/>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <AccordionTitle title={accordionTitle}/>
+                <AccordionBody/>
+            </div>
+        );
+    }
+}
+
