@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AccordionBody = () => {
+export const UncontrolledAccordionBody = () => {
     console.log("UncontrolledAccordionBody rendering")
     return (
         <ul>

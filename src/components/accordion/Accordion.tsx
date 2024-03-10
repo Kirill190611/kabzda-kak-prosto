@@ -7,7 +7,7 @@ type AccordionPropsType = {
     collapsed: boolean
 }
 export const Accordion = ({accordionTitle, collapsed}: AccordionPropsType) => {
-    console.log("Accordion rendered")
+    console.log("UncontrolledAccordion rendered")
     return (
         <div>
             <AccordionTitle title={accordionTitle}/>

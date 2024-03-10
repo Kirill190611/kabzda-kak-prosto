@@ -5,7 +5,7 @@ import {SwitcherOff} from "./SwitcherOff";
 type OnOffProps = {
     switcher: boolean
 }
-export const OnOff = ({switcher}: OnOffProps) => {
+export const OnOff1 = ({switcher}: OnOffProps) => {
     return (
         <div>
             { switcher ? <SwitcherOn/> : <SwitcherOff/> }
