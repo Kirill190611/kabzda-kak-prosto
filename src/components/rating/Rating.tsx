@@ -9,7 +9,7 @@ export const Rating = ({value}: RatingPropsType) => {
 
     return (
         <div>
-            <Star selected={value > 0}/>
+            <Star selected={value > 0} />
             <Star selected={value > 1}/>
             <Star selected={value > 2}/>
             <Star selected={value > 3}/>

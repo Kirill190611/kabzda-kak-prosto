@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Accordion} from "./components/accordion/Accordion";
 import {Rating} from "./components/rating/Rating";
@@ -9,6 +9,7 @@ import {UncontrolledRating} from "./components/uncontrolledRating/UncontrolledRa
 
 const App = () => {
     console.log("App rendered")
+
     return (
         <div className="App">
             {/*<UncontrolledAccordion accordionTitle="Menu" collapsed={true}/>
@@ -21,11 +22,13 @@ const App = () => {
             <Rating value={5} />
             <OnOff1 switcher={true}/>
             <OnOff1 switcher={false}/>*/}
-            <OnOff />
-            <OnOff />
+            {/*<OnOff />
+            <OnOff />*/}
             <UncontrolledAccordion accordionTitle="Menu"/>
             <UncontrolledAccordion accordionTitle="Users"/>
             <UncontrolledRating />
+            <Rating value={3}/>
+            <Accordion accordionTitle="menu1" collapsed={false}/>
         </div>
     );
 }

@@ -7,13 +7,5 @@ type UncontrolledStarPropsType = {
 export const UncontrolledStar = ({selected}: UncontrolledStarPropsType) => {
     console.log("UncontrolledStar rendered")
 
-    if (selected) {
-        return (
-            <span><b>Star </b></span>
-        );
-    } else {
-        return (
-            <span>Star </span>
-        );
-    }
+    return selected ? <span><b>Star </b></span> : <span>Star </span>
 };

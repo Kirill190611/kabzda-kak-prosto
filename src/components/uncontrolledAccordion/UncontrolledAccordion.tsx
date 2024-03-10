@@ -8,13 +8,12 @@ type AccordionPropsType = {
 export const UncontrolledAccordion = ({accordionTitle}: AccordionPropsType) => {
     console.log("UncontrolledAccordion rendered")
 
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(false);
 
     return (
         <div>
             <AccordionTitle title={accordionTitle}/>
-            <button onClick={() => {setCollapsed(false)}}>Open</button>
-            <button onClick={() => {setCollapsed(true);}}>Close</button>
+            <button onClick={() => {setCollapsed(!collapsed)}}>Toggle</button>
             {!collapsed && <UncontrolledAccordionBody/>}
         </div>
     );
