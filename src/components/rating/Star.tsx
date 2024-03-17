@@ -1,20 +1,18 @@
 import React from 'react';
+import {RatingValueType} from "./Rating";
 
 type StarPropsType = {
     selected: boolean
+    value: RatingValueType
+    onClick: (value: RatingValueType) => void
 }
-export const Star = ({selected}: StarPropsType) => {
+export const Star = ({
+                         selected,
+                         onClick,
+                         value
+                     }: StarPropsType) => {
     console.log("Star rendered")
 
-    return selected ? <span><b>Star </b></span> : <span>Star </span>
+    return <span onClick={() => onClick(value)}>{selected ? <b>Star </b> : "Star "}</span>
 
-    // if (selected) {
-    //     return (
-    //         <span><b>Star </b></span>
-    //     );
-    // } else {
-    //     return (
-    //         <span>Star </span>
-    //     );
-    // }
 }

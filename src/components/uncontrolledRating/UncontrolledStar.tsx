@@ -1,11 +1,12 @@
 import React from 'react';
 
-type UncontrolledStarPropsType = {
+type StarPropsType = {
     selected: boolean
+    setValue: () => void
 }
+export const UncontrolledStar = ({selected, setValue}: StarPropsType) => {
+    console.log("Star rendered")
 
-export const UncontrolledStar = ({selected}: UncontrolledStarPropsType) => {
-    console.log("UncontrolledStar rendered")
+    return <span onClick={() => {setValue()}}>{selected ? <b>Star </b> : "Star "}</span>
 
-    return selected ? <span><b>Star </b></span> : <span>Star </span>
-};
+}

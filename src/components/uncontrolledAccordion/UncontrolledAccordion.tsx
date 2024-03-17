@@ -12,8 +12,9 @@ export const UncontrolledAccordion = ({accordionTitle}: AccordionPropsType) => {
 
     return (
         <div>
-            <AccordionTitle title={accordionTitle}/>
-            <button onClick={() => {setCollapsed(!collapsed)}}>Toggle</button>
+            <AccordionTitle title={accordionTitle}
+                            setCollapsed={setCollapsed}
+                            collapsed={collapsed}/>
             {!collapsed && <UncontrolledAccordionBody/>}
         </div>
     );

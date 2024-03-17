@@ -2,10 +2,12 @@ import React from "react";
 
 type AccordionTitlePropsType = {
     title: string
+    collapsed: boolean
+    setCollapsed: (collapsed: boolean) => void
 }
-export const AccordionTitle = ({title}: AccordionTitlePropsType) => {
+export const AccordionTitle = ({title, setCollapsed, collapsed}: AccordionTitlePropsType) => {
     console.log("AccordionTitle rendering")
     return (
-        <h3>{title}</h3>
+        <h3 onClick={() => {setCollapsed(!collapsed)}}>{title}</h3>
     );
 }
