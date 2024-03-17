@@ -5,9 +5,15 @@ type AccordionTitlePropsType = {
     collapsed: boolean
     setCollapsed: (collapsed: boolean) => void
 }
-export const AccordionTitle = ({title, setCollapsed, collapsed}: AccordionTitlePropsType) => {
+export const AccordionTitle = ({
+                                   title,
+                                   setCollapsed,
+                                   collapsed
+                               }: AccordionTitlePropsType) => {
     console.log("AccordionTitle rendering")
     return (
-        <h3 onClick={() => {setCollapsed(!collapsed)}}>{title}</h3>
+        <h3 onClick={() => {
+            setCollapsed(!collapsed)
+        }}>{title}</h3>
     );
 }
