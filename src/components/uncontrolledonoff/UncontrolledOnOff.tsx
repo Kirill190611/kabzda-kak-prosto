@@ -4,8 +4,8 @@ type OnOffProps = {
     // on: boolean
 }
 
-export const OnOff = (props: OnOffProps) => {
-    console.log("OnOff rendered")
+export const UncontrolledOnOff = (props: OnOffProps) => {
+    console.log("UncontrolledOnOff rendered")
 
     const [on, setOn] = useState(false) //hook useState with initial value "false"
 
