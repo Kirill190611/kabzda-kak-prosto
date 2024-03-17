@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 type OnOffProps = {
-    // on: boolean
+    onChange: (on: boolean) => void
 }
 
-export const UncontrolledOnOff = (props: OnOffProps) => {
+export const UncontrolledOnOff = ({onChange}: OnOffProps) => {
     console.log("UncontrolledOnOff rendered")
 
     const [on, setOn] = useState(false) //hook useState with initial value "false"
@@ -43,10 +43,22 @@ export const UncontrolledOnOff = (props: OnOffProps) => {
         backgroundColor: on ? "green" : "red"
     };
 
+    const onClicked = () => {
+        setOn(true)
+        onChange(true)
+    }
+
+    const offClicked = () => {
+        setOn(false)
+        onChange(false)
+    }
+
     return (
         <div style={wrapperStyle}>
-            <div style={onStyle} onClick={() => {setOn(true)}}>On</div>
-            <div style={offStyle} onClick={() => {setOn(false)}}>Off</div>
+            <div style={onStyle} onClick={onClicked}>On
+            </div>
+            <div style={offStyle} onClick={offClicked}>Off
+            </div>
             <div style={indicatorStyle}></div>
         </div>
     );

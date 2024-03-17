@@ -43,10 +43,18 @@ export const OnOff = ({
         backgroundColor: on ? "green" : "red"
     };
 
+    const onClicked = () => {
+        onClick(true)
+    }
+
+    const offClicked = () => {
+        onClick(false)
+    }
+
     return (
         <div style={wrapperStyle}>
-            <div style={onStyle} onClick={() => onClick(true)}>On</div>
-            <div style={offStyle} onClick={() => onClick(false)}>Off</div>
+            <div style={onStyle} onClick={onClicked}>On</div>
+            <div style={offStyle} onClick={offClicked}>Off</div>
             <div style={indicatorStyle}></div>
         </div>
     );

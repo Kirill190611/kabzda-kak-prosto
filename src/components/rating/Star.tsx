@@ -13,6 +13,10 @@ export const Star = ({
                      }: StarPropsType) => {
     console.log("Star rendered")
 
-    return <span onClick={() => onClick(value)}>{selected ? <b>Star </b> : "Star "}</span>
+    const onClicked = () => {
+        onClick(value)
+    }
+
+    return <span onClick={onClicked}>{selected ? <b>Star </b> : "Star "}</span>
 
 }

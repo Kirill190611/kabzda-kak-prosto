@@ -11,7 +11,12 @@ export const AccordionTitle = ({
                                    collapsed
                                }: AccordionTitlePropsType) => {
     console.log("AccordionTitle rendering")
+
+    const onCollapsedHandler = () => {
+        onClick(!collapsed)
+    }
+
     return (
-        <h3 onClick={() => {onClick(!collapsed)}}>{title}</h3>
+        <h3 onClick={onCollapsedHandler}>{title}</h3>
     );
 }
