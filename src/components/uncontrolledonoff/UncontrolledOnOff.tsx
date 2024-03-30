@@ -2,12 +2,16 @@ import React, {useState} from 'react';
 
 type OnOffProps = {
     onChange: (on: boolean) => void
+    defaultOn?: boolean
 }
 
-export const UncontrolledOnOff = ({onChange}: OnOffProps) => {
+export const UncontrolledOnOff = ({
+                                      onChange,
+                                      defaultOn
+                                  }: OnOffProps) => {
     console.log("UncontrolledOnOff rendered")
 
-    const [on, setOn] = useState(false) //hook useState with initial value "false"
+    const [on, setOn] = useState(defaultOn ? defaultOn : false) //hook useState with initial value "false"
 
     console.log("on: ", on);
 
@@ -55,10 +59,8 @@ export const UncontrolledOnOff = ({onChange}: OnOffProps) => {
 
     return (
         <div style={wrapperStyle}>
-            <div style={onStyle} onClick={onClicked}>On
-            </div>
-            <div style={offStyle} onClick={offClicked}>Off
-            </div>
+            <div style={onStyle} onClick={onClicked}>On</div>
+            <div style={offStyle} onClick={offClicked}>Off</div>
             <div style={indicatorStyle}></div>
         </div>
     );
