@@ -3,7 +3,7 @@ import {action} from '@storybook/addon-actions';
 import {Accordion} from './Accordion';
 import {useState} from "react";
 
-export default  {
+export default {
     title: "Accordion",
     component: Accordion,
 };
@@ -18,12 +18,15 @@ export const FirstStory: Story = {
 }*/
 
 const onChangeHandler = action('onChange')
+const onClickCallBack = action('some item were clicked')
 
 export const CollapsedAccordion = () => {
     return (
         <Accordion accordionTitle="Collapsed Accordion"
                    collapsed={true}
-                   onClick={onChangeHandler}/>
+                   onClick={onChangeHandler}
+                   items={[]}
+                   onClickHandler={onClickCallBack}/>
     )
 }
 
@@ -31,7 +34,10 @@ export const OpenedAccordion = () => {
     return (
         <Accordion accordionTitle="Opened Accordion"
                    collapsed={false}
-                   onClick={() => {}}/>
+                   onClick={() => {
+                   }}
+                   items={[{title: "Kirill", value: 1,}, {title: "Asya", value: 2,}, {title: "Nastya", value: 3,},]}
+                   onClickHandler={onClickCallBack}/>
     )
 }
 
@@ -43,6 +49,12 @@ export const AccordionDemo = () => {
                    collapsed={collapsed}
                    onClick={() => {
                        setCollapsed(!collapsed)
-                   }}/>
+                   }}
+                   items={[
+                       {title: "Kirill", value: 1,},
+                       {title: "Asya", value: 2,},
+                       {title: "Nastya", value: 3,},
+                   ]}
+                   onClickHandler={(id) => alert(`User with ID ${id} should be happy!`)}/>
     )
 }

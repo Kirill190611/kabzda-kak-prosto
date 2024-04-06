@@ -1,12 +1,24 @@
 import React from "react";
+import {ItemProps} from "./Accordion";
 
-export const AccordionBody = () => {
+type AccordionBodyProps = {
+    items: ItemProps[]
+    onClickHandler: (value: any) => void
+}
+export const AccordionBody = ({
+                                  items,
+                                  onClickHandler
+                              }: AccordionBodyProps) => {
     console.log("UncontrolledAccordionBody rendering")
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+
+            {
+                items.map((item, index) => <li key={index} onClick={() => {
+                    onClickHandler(item.value)
+                }}>{item.title}</li>)
+            }
+
         </ul>
     );
 }
