@@ -56,3 +56,53 @@ export const GetValueOfUncontrolledInputByBtnPress = () => {
 }
 
 export const ControlledInputWithFixedValue = () => <input value={'it-incubator.by'}/>
+
+export const ControlledInput = () => {
+    const [value, setValue] = useState("")
+
+    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.currentTarget.value)
+    }
+
+    return (
+        <>
+            <input value={value}
+                   onChange={onChangeHandler}/>
+        </>
+    )
+}
+
+export const ControlledCheckbox = () => {
+    const [value, setValue] = useState(true);
+    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.currentTarget.checked)
+    }
+
+    return (
+        <>
+            <input type="checkbox"
+                   checked={value}
+                   onChange={onChangeHandler}/>
+        </>
+    )
+}
+
+export const ControlledSelect = () => {
+    const [value, setValue] = useState<string | undefined>(undefined)
+
+    const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+        setValue(event.currentTarget.value)
+    }
+
+    return (
+        <>
+            <select value={value}
+                    onChange={onChangeHandler}>
+                <option>None</option>
+                <option value={"1"}>Moscow</option>
+                <option value={"2"}>Minsk</option>
+                <option value={"3"}>Kiev</option>
+            </select>
+        </>
+    )
+}
