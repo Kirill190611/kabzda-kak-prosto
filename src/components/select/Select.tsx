@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, KeyboardEvent, useEffect} from 'react';
 import styles from './Select.module.css'
 
 type ItemPropsType = {
@@ -14,8 +14,14 @@ type SelectProps = {
 export const Select = (props: SelectProps) => {
 
     const [active, setActive] = useState(false)
+    const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
 
     const selectedItem = props.items.find(i => i.value === props.value)
+    const hoveredItem = props.items.find(i => i.value === hoveredElementValue)
+
+    useEffect(() => {
+        setHoveredElementValue(props.value)
+    }, [props.value])
 
     const toggleItems = () => {
         setActive(!active);
@@ -26,20 +32,49 @@ export const Select = (props: SelectProps) => {
         toggleItems()
     }
 
+    const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            for (let i = 0; i < props.items.length; i++) {
+                if (props.items[i].value === hoveredElementValue) {
+                    const pretedentElement = e.key === "ArrowDown"
+                        ? props.items[i + 1]
+                        : props.items[i - 1]
+                    if (pretedentElement) {
+                        props.onChange(pretedentElement.value)
+                        return;
+                    }
+                }
+            }
+            if (!selectedItem) {
+                props.onChange(props.items[0].value);
+            }
+        }
+
+        if (e.key === "Enter" || e.key === "Escape") {
+            setActive(false)
+        }
+    }
+
     return (
-        <div className={styles.select}>
+        <div className={styles.select} onKeyUp={onKeyUp} tabIndex={0}>
             <span onClick={toggleItems}>{selectedItem && selectedItem.title}</span>
             {
                 active &&
                 <div className={styles.items}>
                     {
-                        props.items.map(item => <div key={item.value}
-                                                     onClick={() => onItemClick(item.value)}>{item.title}</div>)
+                        props.items.map(item => <div
+                            onMouseEnter={() => {
+                                setHoveredElementValue(item.value)
+                            }}
+                            key={item.value}
+                            onClick={() => onItemClick(item.value)}
+                            className={styles.item + " " + (hoveredItem === item
+                                ? styles.selected
+                                : "")
+                            }>{item.title}</div>)
                     }
                 </div>
             }
         </div>
     );
 };
-
-//todo: start with 40:01

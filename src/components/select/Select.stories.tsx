@@ -33,7 +33,7 @@ export const SelectWithoutValue = () => {
     return (
         <>
             <Select onChange={setValue}
-                    value={null}
+                    value={value}
                     items={[
                         {value: "1", title: "Moscow",},
                         {value: "2", title: "Minsk",},
