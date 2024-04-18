@@ -15,10 +15,6 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
                 collapsed: !state.collapsed
             };
         default:
-            throw new Error("Incorrect action type")
+            return state
     }
-    /*if (action.type === TOGGLE_CONSTANT) {
-        return !state
-    }
-    return state;*/
 }
