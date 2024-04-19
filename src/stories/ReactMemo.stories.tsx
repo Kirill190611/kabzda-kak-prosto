@@ -4,14 +4,14 @@ export default {
     title: "React.memo demo",
 }
 
-type NewMessageCounterProps = {
+export type NewMessageCounterProps = {
     count: number
 }
 const NewMessageCounter = (props: NewMessageCounterProps) => {
     return <div>{props.count}</div>
 }
 
-type UsersProps = {
+export type UsersProps = {
     users: Array<string>
 }
 const UsersSecret = (props: UsersProps) => {
