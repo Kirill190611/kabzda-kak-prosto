@@ -93,13 +93,13 @@ export const LikeUseCallback = () => {
         return books.filter(u => u.toLowerCase().indexOf("a") > -1)
     }, [books])
 
-    const memoizedAddBook = useMemo(() => {
+    /*const memoizedAddBook = useMemo(() => {
         return () => {
             setBooks([
                 ...books, "Angular " + new Date().getTime()
             ])
         }
-    }, [books]);
+    }, [books]);*/
 
     const memoizedAddBook2 = useCallback(() => {
             setBooks([

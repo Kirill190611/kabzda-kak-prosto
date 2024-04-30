@@ -1,5 +1,5 @@
 import {Rating, RatingValueType} from "./Rating";
-import {useCallback, useState} from "react";
+import {useState} from "react";
 
 export default  {
     title: "Rating",
