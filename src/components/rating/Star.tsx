@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {RatingValueType} from "./Rating";
 
 type StarPropsType = {
@@ -6,11 +6,11 @@ type StarPropsType = {
     value: RatingValueType
     onClick: (value: RatingValueType) => void
 }
-export const Star = ({
-                         selected,
-                         onClick,
-                         value
-                     }: StarPropsType) => {
+export const Star = memo(({
+                              selected,
+                              onClick,
+                              value
+                          }: StarPropsType) => {
     console.log("Star rendered")
 
     const onClicked = () => {
@@ -19,4 +19,4 @@ export const Star = ({
 
     return <span onClick={onClicked}>{selected ? <b>Star </b> : "Star "}</span>
 
-}
+})

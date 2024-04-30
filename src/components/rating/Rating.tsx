@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Star} from "./Star";
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
@@ -7,10 +7,10 @@ type RatingPropsType = {
     value: RatingValueType
     onClick: (value: RatingValueType) => void
 }
-export const Rating = ({
-                           value,
-                           onClick
-                       }: RatingPropsType) => {
+export const Rating = memo(({
+                                value,
+                                onClick
+                            }: RatingPropsType) => {
     console.log("Rating rendered")
 
     return (
@@ -32,4 +32,4 @@ export const Rating = ({
                   value={5}/>
         </div>
     );
-}
+})

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 type OnOffProps = {
     on: boolean
     onClick: (on: boolean) => void
 }
 
-export const OnOff = ({
-                          on,
-                          onClick
-                      }: OnOffProps) => {
+export const OnOff = memo(({
+                               on,
+                               onClick
+                           }: OnOffProps) => {
     console.log("UncontrolledOnOff rendered")
 
     const wrapperStyle = {
@@ -58,4 +58,4 @@ export const OnOff = ({
             <div style={indicatorStyle}></div>
         </div>
     );
-};
+});

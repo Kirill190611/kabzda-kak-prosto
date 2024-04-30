@@ -1,4 +1,4 @@
-import React, {useState, KeyboardEvent, useEffect} from 'react';
+import React, {useState, KeyboardEvent, useEffect, memo, useCallback} from 'react';
 import styles from './Select.module.css'
 
 type ItemPropsType = {
@@ -11,7 +11,7 @@ type SelectProps = {
     onChange: (value: any) => void
     items: Array<ItemPropsType>
 }
-export const Select = (props: SelectProps) => {
+export const Select = memo((props: SelectProps) => {
 
     const [active, setActive] = useState(false)
     const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
@@ -23,14 +23,14 @@ export const Select = (props: SelectProps) => {
         setHoveredElementValue(props.value)
     }, [props.value])
 
-    const toggleItems = () => {
+    const toggleItems = useCallback(() => {
         setActive(!active);
-    }
+    }, [active]);
 
-    const onItemClick = (value: any) => {
+    const onItemClick = useCallback((value: any) => {
         props.onChange(value);
         toggleItems()
-    }
+    }, [])
 
     const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -77,4 +77,4 @@ export const Select = (props: SelectProps) => {
             }
         </div>
     );
-};
+})

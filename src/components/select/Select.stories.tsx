@@ -6,12 +6,8 @@ export default  {
     component: Select,
 };
 
-export const SelectWithValue= () => {
+export const SelectWithValue = () => {
     const [value, setValue] = useState('2')
-
-    /*const onChangeHandler = (value: any) => {
-        setValue(value)
-    }*/
 
     return (
         <>

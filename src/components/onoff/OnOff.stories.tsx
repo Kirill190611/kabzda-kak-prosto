@@ -1,5 +1,5 @@
 import {OnOff} from "./OnOff";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {action} from "@storybook/addon-actions";
 
 export default  {
@@ -7,7 +7,7 @@ export default  {
     component: OnOff,
 };
 
-const callback = action("on or off were clicked");
+const callback = useCallback(() => action("on or off were clicked"), []) ;
 
 export const OnMode = () => {
     return (
