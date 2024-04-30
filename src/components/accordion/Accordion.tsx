@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {AccordionTitle} from "./AccordionTitle";
 import {AccordionBody} from "./AccordionBody";
 
@@ -15,22 +15,22 @@ type AccordionPropsType = {
     onClickHandler: (value: any) => void
 }
 
-export const Accordion = ({
-                              accordionTitle,
-                              collapsed,
-                              onClick,
-                              items,
-                              onClickHandler
-                          }: AccordionPropsType) => {
-    console.log("UncontrolledAccordion rendered")
+export const Accordion = memo(({
+                                   accordionTitle,
+                                   collapsed,
+                                   onClick,
+                                   items,
+                                   onClickHandler
+                               }: AccordionPropsType) => {
+        console.log("UncontrolledAccordion rendered")
 
-    return (
-        <div>
-            <AccordionTitle title={accordionTitle}
-                            onClick={onClick}
-                            collapsed={collapsed}/>
-            {!collapsed && <AccordionBody items={items} onClickHandler={onClickHandler}/>}
-        </div>
-    );
-}
-
+        return (
+            <div>
+                <AccordionTitle title={accordionTitle}
+                                onClick={onClick}
+                                collapsed={collapsed}/>
+                {!collapsed && <AccordionBody items={items} onClickHandler={onClickHandler}/>}
+            </div>
+        );
+    }
+)

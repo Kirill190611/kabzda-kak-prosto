@@ -1,24 +1,15 @@
 import {action} from '@storybook/addon-actions';
 
 import {Accordion} from './Accordion';
-import {useState} from "react";
+import {useCallback, useState} from "react";
 
 export default {
     title: "Accordion",
     component: Accordion,
 };
 
-/*type Story = StoryObj<typeof Accordion>
-
-export const FirstStory: Story = {
-    args: {
-        accordionTitle: "hello",
-        collapsed: true,
-    },
-}*/
-
-const onChangeHandler = action('onChange')
-const onClickCallBack = action('some item were clicked')
+const onChangeHandler = useCallback(() => action('onChange'), [])
+const onClickCallBack = useCallback(() => action('some item were clicked'), [])
 
 export const CollapsedAccordion = () => {
     return (

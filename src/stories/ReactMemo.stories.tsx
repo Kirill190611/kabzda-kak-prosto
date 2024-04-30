@@ -14,6 +14,11 @@ const NewMessageCounter = (props: NewMessageCounterProps) => {
 export type UsersProps = {
     users: Array<string>
 }
+
+export type BooksProps = {
+    books: Array<string>
+    AddBook: () => void
+}
 const UsersSecret = (props: UsersProps) => {
     console.log("USERS")
     return <div>{
