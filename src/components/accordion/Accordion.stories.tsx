@@ -1,7 +1,7 @@
 import {action} from '@storybook/addon-actions';
 
 import {Accordion} from './Accordion';
-import {useCallback, useState} from "react";
+import {useState} from "react";
 
 export default {
     title: "Accordion",
