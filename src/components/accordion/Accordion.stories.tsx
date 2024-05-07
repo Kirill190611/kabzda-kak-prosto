@@ -8,8 +8,8 @@ export default {
     component: Accordion,
 };
 
-const onChangeHandler = useCallback(() => action('onChange'), [])
-const onClickCallBack = useCallback(() => action('some item were clicked'), [])
+const onChangeHandler = action('onChange')
+const onClickCallBack = action('some item were clicked')
 
 export const CollapsedAccordion = () => {
     return (

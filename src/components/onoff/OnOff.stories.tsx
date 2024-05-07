@@ -7,7 +7,7 @@ export default  {
     component: OnOff,
 };
 
-const callback = useCallback(() => action("on or off were clicked"), []) ;
+const callback = action("on or off were clicked");
 
 export const OnMode = () => {
     return (
