@@ -84,5 +84,3 @@ export const SetIntervalExample = () => {
         </>
     );
 }
-
-//Todo: необходимо сделать часы
