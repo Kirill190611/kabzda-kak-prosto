@@ -6,9 +6,14 @@ export const Clock: React.FC<ClockProps> = (props) => {
     const [date, setDate] = useState(new Date())
 
     useEffect(() => {
-        setInterval(() => {
+
+        const intervalId = setInterval(() => {
             setDate(new Date())
         }, 1000)
+
+        return () => {
+            clearInterval(intervalId)
+        }
     }, [])
 
     const getToDigitsString = (num: number) => num < 10 ? "0" + num : num
