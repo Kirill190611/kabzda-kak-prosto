@@ -84,3 +84,30 @@ export const SetIntervalExample = () => {
         </>
     );
 }
+
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1);
+
+    console.log("Component rendered with " + counter);
+
+    useEffect(() => {
+
+        console.log("Effect completed: " + counter)
+
+        return () => {
+            console.log("RESET EFFECT " + counter)
+        }
+
+    }, [counter]);
+
+    const onIncrease = () => {
+        setCounter(counter + 1)
+    }
+
+    return (
+        <>
+            Hello, counter: {counter}
+            <button onClick={onIncrease}>+</button>
+        </>
+    );
+}
