@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {clearTimeout} from "node:timers";
 
 export default {
     title: "useEffect demo",
@@ -48,10 +49,14 @@ export const SetTimeoutExample = () => {
 
     useEffect(() => {
 
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             console.log("setTimeout")
             document.title = counter.toString();
         }, 1000)
+
+        return () => {
+            clearTimeout(timeoutId);
+        }
 
     }, [counter]);
 
@@ -71,10 +76,14 @@ export const SetIntervalExample = () => {
 
     useEffect(() => {
 
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log("setInterval");
             setCounter((state: number) => state + 1);
         }, 1000)
+
+        return () => {
+            clearInterval(intervalId);
+        }
 
     }, []);
 
@@ -108,6 +117,57 @@ export const ResetEffectExample = () => {
         <>
             Hello, counter: {counter}
             <button onClick={onIncrease}>+</button>
+        </>
+    );
+}
+
+export const KeysTrackerExample = () => {
+    const [text, setText] = useState("");
+
+    console.log("Component rendered with " + text);
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key);
+            setText(text + e.key);
+        }
+
+        window.addEventListener('keypress', handler);
+
+        return () => {
+            window.removeEventListener('keypress', handler);
+        }
+
+    }, [text]);
+
+    return (
+        <>
+            Typed text: {text}
+        </>
+    );
+}
+
+export const SetTimeoutExample1 = () => {
+    const [text, setText] = useState("");
+
+    console.log("Component rendered with " + text);
+
+    useEffect(() => {
+
+        const setTimeoutId = setTimeout(() => {
+            console.log('TIMEOUT EXPIRED')
+            setText('3 seconds passed');
+        }, 3000)
+
+        return () => {
+            clearTimeout(setTimeoutId);
+        }
+
+    }, [text]);
+
+    return (
+        <>
+            Typed text: {text}
         </>
     );
 }
